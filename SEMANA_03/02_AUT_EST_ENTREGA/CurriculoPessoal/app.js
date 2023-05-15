@@ -43,6 +43,7 @@ app.post("/createCandidate", function (req, res) {
 });
 
 app.put("/updateCandidate", function (req, res) {
+    res.statusCode = 200;
     res.header("Acess-Control-Allow-Origin", "*");
     var id_candidate = req.body.id_candidate;
     var candidate_name = req.body.candidate_name;
@@ -50,7 +51,7 @@ app.put("/updateCandidate", function (req, res) {
     var candidate_email = req.body.candidate_email;
     var candidate_description = req.body.candidate_description;
 
-    sql = `UPDATE candidate SET candidate_name = "${candidate_name}",candidate_phone = "${candidate_phone}",candidate_email = "${candidate_email}",candidate_description = "${candidate_description}") WHERE id_candidate = ${id_candidate},`;
+    sql = `UPDATE candidate SET candidate_name = "${candidate_name}",candidate_phone = "${candidate_phone}",candidate_email = "${candidate_email}",candidate_description = "${candidate_description}" WHERE id_candidate = ${id_candidate}`;
 
     db.all(sql, [], (err, rows) => {
         if (err) {
@@ -61,7 +62,7 @@ app.put("/updateCandidate", function (req, res) {
     });
 });
 
-app.post("/deleteCandidate", function (req, res) {
+app.delete("/deleteCandidate", function (req, res) {
     res.header("Acess-Control-Allow-Origin", "*");
     var id_candidate = req.body.id_candidate;
     sql = `DELETE FROM candidate WHERE id_candidate = ${id_candidate}`;
