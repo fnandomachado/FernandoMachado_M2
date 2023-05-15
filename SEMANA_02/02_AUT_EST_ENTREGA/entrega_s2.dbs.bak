@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Sqlite" id="Project-1c38" database="Sqlite" >
+	<schema name="Default" >
+		<table name="accomplishments" prior="Realização" >
+			<column name="accomplishments_award" prior="realizacao_titulo" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="id_accomplishments" prior="id_realizacao" type="INTEGER" jt="4" mandatory="y" />
+			<column name="accomplishments_year" prior="realizacao_data" type="VARCHAR" length="4" jt="12" mandatory="y" />
+			<column name="accomplishments_description" prior="realizacao_descricao" type="VARCHAR" length="600" jt="12" />
+			<column name="id_candidate" type="INTEGER" jt="4" />
+			<index name="pk_Realização" unique="PRIMARY_KEY" >
+				<column name="id_accomplishments" />
+			</index>
+			<index name="unq_accomplishments_id_candidate" unique="UNIQUE_KEY" >
+				<column name="id_candidate" />
+			</index>
+		</table>
+		<table name="adress" >
+			<column name="id_adress" type="INTEGER" jt="4" mandatory="y" />
+			<column name="adress_zipcode" type="VARCHAR" length="8" jt="12" mandatory="y" />
+			<column name="adress_number" type="VARCHAR" length="8" jt="12" mandatory="y" />
+			<column name="adress_street" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="id_candidate" type="INTEGER" jt="4" />
+			<index name="pk_adress" unique="PRIMARY_KEY" >
+				<column name="id_adress" />
+			</index>
+			<index name="unq_adress_id_candidate" unique="UNIQUE_KEY" >
+				<column name="id_candidate" />
+			</index>
+		</table>
+		<table name="candidate" prior="candidato" >
+			<column name="id_candidate" prior="id_candidato" type="INTEGER" jt="4" mandatory="y" />
+			<column name="candidate_name" prior="candidato_name" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="candidate_phone" prior="candidato_telefone" type="VARCHAR" length="13" jt="12" mandatory="y" />
+			<column name="candidate_email" prior="candidato_email" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="candidate_description" prior="candidato_descricao" type="VARCHAR" length="600" jt="12" mandatory="y" />
+			<index name="pk_candidato" unique="PRIMARY_KEY" >
+				<column name="id_candidate" />
+			</index>
+			<fk name="fk_candidate" to_schema="Default" to_table="experience" >
+				<fk_column name="id_candidate" pk="id_candidate" />
+			</fk>
+			<fk name="fk_candidate_0" to_schema="Default" to_table="education" >
+				<fk_column name="id_candidate" pk="id_candidate" />
+			</fk>
+			<fk name="fk_candidate_1" to_schema="Default" to_table="accomplishments" >
+				<fk_column name="id_candidate" pk="id_candidate" />
+			</fk>
+			<fk name="fk_candidate_2" to_schema="Default" to_table="adress" >
+				<fk_column name="id_candidate" pk="id_candidate" />
+			</fk>
+			<fk name="fk_candidate_3" to_schema="Default" to_table="personality" >
+				<fk_column name="id_candidate" pk="id_candidate" />
+			</fk>
+			<fk name="fk_candidate_4" to_schema="Default" to_table="skills" >
+				<fk_column name="id_candidate" pk="id_candidate" />
+			</fk>
+		</table>
+		<table name="education" prior="Formação" >
+			<column name="id_education" prior="id_graduation" type="INTEGER" jt="4" mandatory="y" />
+			<column name="education_institution" prior="graduation_institution" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="education_course" prior="instituicao_curso" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="education_start" prior="formacao_inicio" type="VARCHAR" length="8" jt="12" mandatory="y" />
+			<column name="education_end" prior="formacao_fim" type="VARCHAR" length="8" jt="12" mandatory="y" />
+			<column name="education_degree" prior="formacao_grauobtido" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="id_candidate" type="INTEGER" jt="4" />
+			<index name="pk_Formação" unique="PRIMARY_KEY" >
+				<column name="id_education" />
+			</index>
+			<index name="unq_education_id_candidate" unique="UNIQUE_KEY" >
+				<column name="id_candidate" />
+			</index>
+		</table>
+		<table name="experience" prior="Experiências" >
+			<column name="id_experience" prior="id_experiencias" type="INTEGER" jt="4" mandatory="y" />
+			<column name="experience_enterprise" prior="experiencias_empresa" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="experience_role" prior="experiencias_cargo" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="experience_description" prior="experiencias_descricao" type="VARCHAR" length="600" jt="12" mandatory="y" />
+			<column name="experience_start" prior="experiencias_inicio" type="VARCHAR" length="8" jt="12" mandatory="y" />
+			<column name="experience_end" prior="experiencias_fim" type="VARCHAR" length="8" jt="12" mandatory="y" />
+			<column name="id_candidate" type="INTEGER" jt="4" />
+			<index name="pk_Experiências" unique="PRIMARY_KEY" >
+				<column name="id_experience" />
+			</index>
+			<index name="unq_experience_id_candidate" unique="UNIQUE_KEY" >
+				<column name="id_candidate" />
+			</index>
+		</table>
+		<table name="personality" >
+			<column name="id_personality" type="INTEGER" jt="4" mandatory="y" />
+			<column name="personality_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="personality_level" type="VARCHAR" length="10" jt="12" mandatory="y" />
+			<column name="id_candidate" type="INTEGER" jt="4" />
+			<index name="pk_personality" unique="PRIMARY_KEY" >
+				<column name="id_personality" />
+			</index>
+			<index name="unq_personality_id_candidate" unique="UNIQUE_KEY" >
+				<column name="id_candidate" />
+			</index>
+		</table>
+		<table name="skills" >
+			<column name="id_skill" type="INTEGER" jt="4" mandatory="y" />
+			<column name="skill_name" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="skil_level" type="VARCHAR" length="10" jt="12" mandatory="y" />
+			<column name="id_candidate" type="INTEGER" jt="4" />
+			<index name="pk_skills" unique="PRIMARY_KEY" >
+				<column name="id_skill" />
+			</index>
+			<index name="unq_skills_id_candidate" unique="UNIQUE_KEY" >
+				<column name="id_candidate" />
+			</index>
+		</table>
+	</schema>
+	<connector name="Sqlite" database="Sqlite" driver_class="org.sqlite.JDBC" driver_jar="sqlite-jdbc-3.40.0.0.jar" driver_desc="Standard" host="localhost" port="7210" instance="C:\Users\Inteli\cv" useSystemProxy="false" />
+	<layout name="Main Layout" id="Layout-2149" show_relation="columns" >
+		<entity schema="Default" name="accomplishments" color="C1D8EE" x="256" y="288" />
+		<entity schema="Default" name="adress" color="C1D8EE" x="528" y="304" />
+		<entity schema="Default" name="candidate" color="C1D8EE" x="288" y="48" />
+		<entity schema="Default" name="education" color="C1D8EE" x="64" y="240" />
+		<entity schema="Default" name="experience" color="C1D8EE" x="48" y="48" />
+		<entity schema="Default" name="personality" color="C1D8EE" x="512" y="176" />
+		<entity schema="Default" name="skills" color="C1D8EE" x="576" y="48" />
+	</layout>
+</project>
