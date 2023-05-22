@@ -10,12 +10,12 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
-    res.send("Entrega De Programação");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.send("Entrega De nodProgramação");
 });
 
 app.get("/Candidate", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     db.all(`SELECT * FROM candidate`, [], (err, rows) => {
         if (err) {
             res.send(err);
@@ -25,7 +25,7 @@ app.get("/Candidate", function (req, res) {
 });
 
 app.get("/Accomplishments", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     db.all(`SELECT  id_candidate, id_accomplishments, accomplishments_award, accomplishments_year, accomplishments_description FROM accomplishments`, [], (err, rows) => {
         if (err) {
             res.send(err);
@@ -35,7 +35,7 @@ app.get("/Accomplishments", function (req, res) {
 });
 
 app.get("/Adress", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     db.all(`SELECT  id_candidate, id_adress, adress_zipcode, adress_number, adress_street FROM adress`, [], (err, rows) => {
         if (err) {
             res.send(err);
@@ -45,7 +45,7 @@ app.get("/Adress", function (req, res) {
 });
 
 app.get("/Education", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     db.all(`SELECT  id_candidate, id_education, education_course, education_institution, education_start, education_end, education_degree FROM education`, [], (err, rows) => {
         if (err) {
             res.send(err);
@@ -55,7 +55,7 @@ app.get("/Education", function (req, res) {
 });
 
 app.get("/Experience", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     db.all(`SELECT  id_candidate, id_experience, experience_enterprise, experience_role, experience_start, experience_end, experience_description FROM experience`, [], (err, rows) => {
         if (err) {
             res.send(err);
@@ -65,7 +65,7 @@ app.get("/Experience", function (req, res) {
 });
 
 app.get("/Personality", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     db.all(`SELECT * FROM personality`, [], (err, rows) => {
         if (err) {
             res.send(err);
@@ -75,7 +75,7 @@ app.get("/Personality", function (req, res) {
 });
 
 app.get("/Skills", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     db.all(`SELECT * FROM skills`, [], (err, rows) => {
         if (err) {
             res.send(err);
@@ -86,7 +86,7 @@ app.get("/Skills", function (req, res) {
 
 app.post("/createCandidate", function (req, res) {
     res.statusCode = 200;
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     var id_candidate = req.body.id_candidate;
     var candidate_name = req.body.candidate_name;
     var candidate_phone = req.body.candidate_phone;
@@ -104,7 +104,7 @@ app.post("/createCandidate", function (req, res) {
 
 app.put("/updateCandidate", function (req, res) {
     res.statusCode = 200;
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     var id_candidate = req.body.id_candidate;
     var candidate_name = req.body.candidate_name;
     var candidate_phone = req.body.candidate_phone;
@@ -123,7 +123,7 @@ app.put("/updateCandidate", function (req, res) {
 });
 
 app.delete("/deleteCandidate", function (req, res) {
-    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     var id_candidate = req.body.id_candidate;
     sql = `DELETE FROM candidate WHERE id_candidate = ${id_candidate}`;
     db.all(sql, [], (err, rows) => {
