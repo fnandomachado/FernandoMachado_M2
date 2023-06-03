@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="conexao.js"></script>
+  </head>
+    <title>Criar Novo Candidato</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 30px; 
+        }
+        form {
+            max-width: 500px; 
+            margin: 0 auto; 
+            background-color: #fff; 
+            padding: 20px;
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+        label {
+            display: block;
+            margin-bottom: 10px; 
+            font-weight: bold; 
+        }
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px; 
+            margin-bottom: 20px;
+            border: none; 
+            border-radius: 5px; 
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        button {
+            display: block; 
+            margin: 0 auto; 
+            padding: 10px 20px;
+            background-color: #4CAF50; 
+            color: #fff; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.2s; 
+        }
+        button:hover {
+            background-color: #3e8e41; 
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Criar novo candidato:</h1>
+    <form>
+        <label for="recebeId">Id:</label>
+        <input type="text" id="recebeId" placeholder="Insira o Id">
+
+        <label for="recebeNome">Nome:</label>
+        <input type="text" id="recebeNome" placeholder="Insira o nome aqui!">
+
+        <label for="recebeEmail">Email:</label>
+        <input type="email" id="recebeEmail" placeholder="Insira o Email aqui!">
+
+        <label for="recebeTelefone">Telefone:</label>
+        <input type="tel" id="recebeTelefone" placeholder="Insira o telefone aqui!">
+
+        <label for="recebeDescricao">Descrição:</label>
+        <textarea id="recebeDescricao" placeholder="Insira a descrição!"></textarea>
+
+        <button type="button" onclick="CriaUsuario()"> <a href="select.html">Clique para enviar os dados!</a> </button>
+    </form>
+</body>
+
+</html>

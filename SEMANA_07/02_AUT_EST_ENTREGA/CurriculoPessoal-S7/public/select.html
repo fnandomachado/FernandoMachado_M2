@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="conexao.js"></script>
+      
+    <title>Selecione o ID</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      
+      h1 {
+        color: #333;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px #ccc;
+        width: 300px;
+        margin-bottom: 20px;
+      }
+      
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #3e8e41;
+      }
+      a{
+        text-decoration: none;
+        color:white;
+      }
+    </style>
+  </head>
+  <body align="center">
+    <h1>Escreva o ID do candidato desejado:</h1>
+    <form>
+      <label for="candidato-id">ID do candidato:</label>
+      <input type="text" id="candidato-id">
+      <button onclick="TesteAjax()"> <a href="pagcurriculo.html"> Enviar </a></button>
+    </form>
+  </body>
+</html>
